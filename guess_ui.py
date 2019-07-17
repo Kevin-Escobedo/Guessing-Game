@@ -11,6 +11,7 @@ class GameInterface:
         self.root_window.geometry("300x150")
         self.root_window.title("Guessing Game")
         self.root_window.resizable(0, 0)
+        self.root_window.iconbitmap(self.resource_path("question_mark.ico"))
         self.guess_entry = tkinter.Entry(self.root_window)
 
     def resource_path(self, relative_path):
