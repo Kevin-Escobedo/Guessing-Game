@@ -24,3 +24,4 @@ class GameInterface:
         '''Runs the GUI'''
         tkinter.Label(self.root_window, text = "Enter Guess").grid(row=0, column=0)
         self.guess_entry.grid(row = 0, column = 1, sticky = tkinter.NSEW)
+        self.root_window.mainloop()
