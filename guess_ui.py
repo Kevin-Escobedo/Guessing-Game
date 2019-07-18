@@ -8,7 +8,7 @@ import sys
 class GameInterface:
     def __init__(self):
         self.root_window = tkinter.Tk()
-        self.root_window.geometry("300x150")
+        self.root_window.geometry("250x150")
         self.root_window.title("Guessing Game")
         self.root_window.resizable(0, 0)
         self.root_window.iconbitmap(self.resource_path("question_mark.ico"))
@@ -35,19 +35,25 @@ class GameInterface:
     def check(self):
         '''Checks the guess'''
         guess = self.get_guess()
-        self.result.set(self.game.check_guess(guess))
+        if guess != None:
+            self.result.set(self.game.check_guess(guess))
+        self.show_tries.set("Tries: {}".format(self.game.tries))
 
 
     def run(self):
         '''Runs the GUI'''
-        tkinter.Label(self.root_window, text = "Enter Guess").grid(row=0, column=0)
+        tkinter.Label(self.root_window, text = "Enter Guess").grid(row=1, column=0)
         self.guess_entry.grid(row = 0, column = 1, sticky = tkinter.NSEW)
 
-        tkinter.Label(self.root_window, textvariable = self.show_tries).grid(row = 2, column = 1)
+        tkinter.Label(self.root_window, textvariable = self.show_tries).grid(row = 4, column = 1)
         self.show_tries.set("Tries: {}".format(self.game.tries))
 
-        tkinter.Label(self.root_window, textvariable = self.result).grid(row = 1, column = 1)
+        tkinter.Label(self.root_window, textvariable = self.result).grid(row = 3, column = 1)
 
+        button = tkinter.Button(self.root_window, text = "Enter", command = self.check)
+        button.grid(row = 2, column = 1, sticky = tkinter.NSEW)
+
+        tkinter.Label(self.root_window, text = "I'm thinking of a number between 1 and 100").grid(row = 0, column = 0)
         self.root_window.mainloop()
 
 if __name__ == "__main__":
