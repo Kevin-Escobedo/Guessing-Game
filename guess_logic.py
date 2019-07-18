@@ -9,10 +9,12 @@ class GuessingGame:
         self.guessed_number = False
     def check_guess(self, guess:int):
         '''Checks how the guess compares to the number'''
-        self.tries += 1
-        if guess > self.number:
-            return "Lower"
-        elif guess < self.number:
-            return "Higher"
-        else:
-            return "Correct"
+        if not self.guessed_number:
+            self.tries += 1
+            if guess > self.number:
+                return "Lower"
+            elif guess < self.number:
+                return "Higher"
+            else:
+                self.guessed_number = True
+                return "Correct"

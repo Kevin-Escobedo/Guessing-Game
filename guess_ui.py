@@ -30,13 +30,14 @@ class GameInterface:
                 raise ValueError
             return guess
         except ValueError:
-            self.result.set("Invalid guess")
+            self.result.set("Invalid Guess")
 
     def check(self):
         '''Checks the guess'''
         guess = self.get_guess()
-        if guess != None:
-            self.result.set(self.game.check_guess(guess))
+        message = self.game.check_guess(guess)
+        if guess and message:
+            self.result.set(message)
         self.show_tries.set("Tries: {}".format(self.game.tries))
 
 
