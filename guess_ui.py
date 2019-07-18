@@ -43,7 +43,7 @@ class GameInterface:
     def run(self):
         '''Runs the GUI'''
         tkinter.Label(self.root_window, text = "Enter Guess").grid(row=1, column=0)
-        self.guess_entry.grid(row = 0, column = 1, sticky = tkinter.NSEW)
+        self.guess_entry.grid(row = 1, column = 1, sticky = tkinter.NSEW)
 
         tkinter.Label(self.root_window, textvariable = self.show_tries).grid(row = 4, column = 1)
         self.show_tries.set("Tries: {}".format(self.game.tries))
@@ -53,7 +53,7 @@ class GameInterface:
         button = tkinter.Button(self.root_window, text = "Enter", command = self.check)
         button.grid(row = 2, column = 1, sticky = tkinter.NSEW)
 
-        tkinter.Label(self.root_window, text = "I'm thinking of a number between 1 and 100").grid(row = 0, column = 0)
+        tkinter.Label(self.root_window, text = "I'm thinking of a number between 1 and 100").grid(row = 0, column = 0, columnspan = 2)
         self.root_window.mainloop()
 
 if __name__ == "__main__":
