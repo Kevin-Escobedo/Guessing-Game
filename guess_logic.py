@@ -3,10 +3,13 @@
 import random
 
 class GuessingGame:
-    def __init__(self):
-        self.number = random.randrange(1, 101)
+    def __init__(self, lower = 1, upper = 100):
+        self.lower = lower
+        self.upper = upper
+        self.number = random.randrange(self.lower, self.upper + 1)
         self.tries = 0
         self.guessed_number = False
+        
     def check_guess(self, guess:int):
         '''Checks how the guess compares to the number'''
         if not self.guessed_number:
@@ -21,10 +24,10 @@ class GuessingGame:
             
     def auto_guess(self):
         '''Tries to guess the number using binary search'''
-        lower = 0
-        upper = 100
+        lower = self.lower - 1
+        upper = self.upper + 1
         while not self.guessed_number:
-            guess = int((upper + lower) * 0.5)
+            guess = int((lower + upper) * 0.5)
             result = self.check_guess(guess)
             if result == "Lower":
                 upper = guess
