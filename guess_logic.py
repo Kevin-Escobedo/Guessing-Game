@@ -18,3 +18,20 @@ class GuessingGame:
             else:
                 self.guessed_number = True
                 return "Correct"
+            
+    def auto_guess(self):
+        '''Tries to guess the number using binary search'''
+        lower = 0
+        upper = 100
+        while not self.guessed_number:
+            guess = int((upper + lower) * 0.5)
+            result = self.check_guess(guess)
+            if result == "Lower":
+                upper = guess
+            elif result == "Higher":
+                lower = guess
+        return self.tries
+
+
+if __name__ == "__main__":
+    g = GuessingGame()
